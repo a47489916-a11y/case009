@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+*.log
+logs/
+backtester/output/
+backtester/data/cache/
+clmm-manager/data/
+*.db
+*.sqlite
+dist/

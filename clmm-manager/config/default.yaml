@@ -1,0 +1,68 @@
+solana:
+  rpcUrl: "https://api.mainnet-beta.solana.com"
+  walletPath: "~/.config/solana/id.json"
+
+sui:
+  rpcUrl: "https://fullnode.mainnet.sui.io:443"
+  walletPath: "~/.sui/sui_config/sui.keystore"
+
+strategy:
+  type: "volatility_2sigma"
+  params:
+    atrPeriod: 14
+    multiplier: 2.0
+    holdingDays: 7
+    emaPeriodShort: 7
+    emaPeriodLong: 21
+    bollingerPeriod: 20
+    bollingerStdDev: 2.0
+    fixedPctRange: 0.10
+
+risk:
+  maxRebalancesPerDay: 6
+  cooldownHours: 4
+  circuitBreaker24hPct: 15
+  maxSlippageBps: 50
+  oracleDeviationPct: 2
+  minWaitHoursOutOfRange: 4
+  maxWaitHoursOutOfRange: 12
+  costToFeeThreshold: 0.5
+
+allocation:
+  pools:
+    - pool: "SOL/USDC"
+      chain: "solana"
+      dex: "orca"
+      weight: 0.625
+    - pool: "SOL/mSOL"
+      chain: "solana"
+      dex: "orca"
+      weight: 0.10
+    - pool: "SUI/USDC"
+      chain: "sui"
+      dex: "cetus"
+      weight: 0.15
+  usdcReservePct: 0.125
+
+notifications:
+  discordWebhookUrl: ""
+
+tax:
+  outputDir: "./tax-reports"
+  baseCurrency: "JPY"
+
+monitoring:
+  intervalMs: 30000
+  nearBoundaryPct: 0.10
+
+database:
+  path: "./data/clmm-manager.db"
+
+logging:
+  level: "info"
+  dir: "./logs"
+
+priceFeed:
+  pythEndpoint: "https://hermes.pyth.network"
+  coingeckoApiKey: ""
+  cacheTtlMs: 30000
